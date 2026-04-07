@@ -400,3 +400,131 @@ textarea {
     margin-right: 0;
   }
 }
+/* =============================================
+   Filtros
+   ============================================= */
+
+#filtros {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+#filtros input,
+#filtros select {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background: white;
+  color: #1a1a2e;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#filtros input { flex: 1; min-width: 180px; }
+
+#filtros input:focus,
+#filtros select:focus {
+  border-color: #4f8ef7;
+  box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.15);
+}
+
+/* =============================================
+   Tabela
+   ============================================= */
+
+#container-tabela {
+  margin-top: 1.25rem;
+  overflow-x: auto;
+}
+
+#tabela-tarefas {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+}
+
+#tabela-tarefas thead {
+  background-color: #1a1a2e;
+  color: white;
+}
+
+#tabela-tarefas th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+#tabela-tarefas td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2d3748;
+  vertical-align: middle;
+}
+
+#tabela-tarefas tbody tr:last-child td {
+  border-bottom: none;
+}
+
+#tabela-tarefas tbody tr:hover {
+  background-color: #f7faff;
+}
+
+/* Badges de prioridade e status */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.prioridade-baixa  { background: #c6f6d5; color: #22543d; }
+.prioridade-media  { background: #fefcbf; color: #744210; }
+.prioridade-alta   { background: #fed7d7; color: #742a2a; }
+
+.status-pendente      { background: #e2e8f0; color: #2d3748; }
+.status-em-andamento  { background: #bee3f8; color: #2a4365; }
+.status-concluida     { background: #c6f6d5; color: #22543d; }
+
+/* Botões de ação */
+.acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-editar,
+.btn-excluir {
+  padding: 0.35rem 0.85rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-editar  { background: #4f8ef7; color: white; }
+.btn-editar:hover  { background: #3a7be0; }
+
+.btn-excluir { background: #fed7d7; color: #742a2a; }
+.btn-excluir:hover { background: #feb2b2; }
+
+#sem-tarefas {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  color: #718096;
+  font-size: 0.92rem;
+  margin-top: 1rem;
+}
