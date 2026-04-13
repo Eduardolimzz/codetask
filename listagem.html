@@ -17,53 +17,56 @@
       </nav>
     </header>
 
-   <main>
-  <section>
-    <h1>Minhas Tarefas</h1>
-    <p>Veja todas as tarefas cadastradas.</p>
+    <main>
+      <section>
+        <h1>Minhas Tarefas</h1>
+        <p>Veja todas as tarefas cadastradas.</p>
 
-    <!-- Filtro -->
-    <div id="filtros">
-      <input type="text" id="busca" placeholder="Buscar por título ou disciplina..." />
-      <select id="filtro-status">
-        <option value="">Todos os status</option>
-        <option value="pendente">Pendente</option>
-        <option value="em-andamento">Em andamento</option>
-        <option value="concluida">Concluída</option>
-      </select>
-      <select id="filtro-prioridade">
-        <option value="">Todas as prioridades</option>
-        <option value="baixa">Baixa</option>
-        <option value="media">Média</option>
-        <option value="alta">Alta</option>
-      </select>
-    </div>
+        <!-- Filtro -->
+        <form id="filtros">
+          <input type="text" id="busca" placeholder="Buscar por título ou disciplina..." />
 
-    <!-- Tabela -->
-    <div id="container-tabela">
-      <table id="tabela-tarefas">
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Disciplina</th>
-            <th>Prazo</th>
-            <th>Prioridade</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody id="corpo-tabela">
-          <!-- Linhas geradas pelo JS -->
-        </tbody>
-      </table>
-      <p id="sem-tarefas">
-        Nenhuma tarefa encontrada.
-        <a href="cadastro.html">Cadastrar agora</a>
-      </p>
-    </div>
+          <select id="filtro-status">
+            <option value="">Todos os status</option>
+            <option value="pendente">Pendente</option>
+            <option value="em-andamento">Em andamento</option>
+            <option value="concluida">Concluída</option>
+          </select>
 
-  </section>
-</main>
+          <select id="filtro-prioridade">
+            <option value="">Todas as prioridades</option>
+            <option value="baixa">Baixa</option>
+            <option value="media">Média</option>
+            <option value="alta">Alta</option>
+          </select>
+        </form>
+
+        <!-- Tabela -->
+        <section id="container-tabela">
+          <table id="tabela-tarefas">
+            <thead>
+              <tr>
+                <th>Título</th>
+                <th>Disciplina</th>
+                <th>Prazo</th>
+                <th>Prioridade</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-tabela">
+              <!-- Linhas geradas pelo JS -->
+            </tbody>
+          </table>
+
+          <p id="sem-tarefas">
+            Nenhuma tarefa encontrada.
+            <a href="cadastro.html">Cadastrar agora</a>
+          </p>
+        </section>
+
+      </section>
+    </main>
 
     <footer>
       <p>CodeTask &mdash; Gerenciador de Tarefas Acadêmicas &copy; 2025</p>
