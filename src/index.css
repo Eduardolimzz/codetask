@@ -233,3 +233,120 @@ select:focus {
     padding: 1.5rem 1rem;
   }
 }
+
+.listagemHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.resumoListagem {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  min-width: 220px;
+}
+
+.resumoListagem p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.statusBox {
+  background: #edf2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.statusBox p {
+  margin: 0.25rem 0;
+}
+
+.loading {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.erroBox {
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  color: #c53030;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badgeApi {
+  background-color: #e0f2fe;
+  color: #075985;
+}
+
+.badgeCadastro {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.cardMeta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.cardMeta p {
+  font-size: 0.85rem;
+  margin: 0;
+  background: #f8fafc;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.descricao {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 720px) {
+  .listagemHeader {
+    flex-direction: column;
+  }
+
+  .resumoListagem {
+    width: 100%;
+  }
+
+  .cardMeta {
+    grid-template-columns: 1fr;
+  }
+
+  .navList {
+    height: auto;
+    padding: 0.75rem 0;
+  }
+
+  .navList a {
+    padding: 0.5rem 0.75rem;
+  }
+}
