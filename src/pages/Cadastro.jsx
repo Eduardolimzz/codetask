@@ -1,10 +1,13 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useItems } from "../context/ItemsContext.jsx";
 
 export default function Cadastro() {
   const navigate = useNavigate();
-  const { addItem } = useItems();
+  const { id } = useParams();
+  const { items, addItem, updateItem } = useItems();
+
+  const modoEdicao = Boolean(id);
 
   const [titulo, setTitulo] = useState("");
   const [disciplina, setDisciplina] = useState("");
@@ -12,8 +15,23 @@ export default function Cadastro() {
   const [prazo, setPrazo] = useState("");
   const [prioridade, setPrioridade] = useState("");
   const [status, setStatus] = useState("");
-
   const [erros, setErros] = useState({});
+
+  useEffect(() => {
+    if (modoEdicao) {
+      const item = items.find((i) => String(i.id) === String(id));
+      if (item) {
+        setTitulo(item.titulo);
+        setDisciplina(item.disciplina);
+        setDescricao(item.descricao);
+        setPrazo(item.prazo);
+        setPrioridade(item.prioridade);
+        setStatus(item.status);
+      } else {
+        navigate("/listagem");
+      }
+    }
+  }, [id, modoEdicao]);
 
   function validar() {
     const next = {};
@@ -34,7 +52,7 @@ export default function Cadastro() {
     if (Object.keys(nextErros).length > 0) return;
 
     const item = {
-      id: Date.now(),
+      id: modoEdicao ? Number(id) : Date.now(),
       titulo: titulo.trim(),
       disciplina: disciplina.trim(),
       descricao: descricao.trim(),
@@ -43,32 +61,34 @@ export default function Cadastro() {
       status,
     };
 
-    addItem(item);
-
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title: item.titulo,
-        body: item.descricao,
-        userId: 1,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Tarefa enviada para API:", data);
-        navigate("/listagem");
+    if (modoEdicao) {
+      updateItem(item);
+      navigate("/listagem");
+    } else {
+      addItem(item);
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: item.titulo,
+          body: item.descricao,
+          userId: 1,
+        }),
       })
-      .catch((error) => {
-        console.error("Erro na requisição POST:", error);
-        navigate("/listagem");
-      });
+        .then((res) => res.json())
+        .then(() => navigate("/listagem"))
+        .catch(() => navigate("/listagem"));
+    }
   }
 
   return (
     <section className="page">
-      <h1>Cadastro</h1>
-      <p>Preencha o formulário para cadastrar uma tarefa.</p>
+      <h1>{modoEdicao ? "Editar Tarefa" : "Cadastro"}</h1>
+      <p>
+        {modoEdicao
+          ? "Altere os campos e salve para atualizar a tarefa."
+          : "Preencha o formulário para cadastrar uma tarefa."}
+      </p>
 
       <form className="form" onSubmit={handleSubmit} noValidate>
         <fieldset className="fieldset">
@@ -81,11 +101,7 @@ export default function Cadastro() {
               onChange={(e) => setTitulo(e.target.value)}
               placeholder="Ex: Trabalho de Tecnologias Web"
             />
-            {erros.titulo && (
-              <p className="fieldError" role="alert">
-                {erros.titulo}
-              </p>
-            )}
+            {erros.titulo && <p className="fieldError" role="alert">{erros.titulo}</p>}
           </section>
 
           <section className="field">
@@ -97,11 +113,7 @@ export default function Cadastro() {
               onChange={(e) => setDisciplina(e.target.value)}
               placeholder="Ex: Tecnologias Web"
             />
-            {erros.disciplina && (
-              <p className="fieldError" role="alert">
-                {erros.disciplina}
-              </p>
-            )}
+            {erros.disciplina && <p className="fieldError" role="alert">{erros.disciplina}</p>}
           </section>
 
           <section className="field">
@@ -113,58 +125,55 @@ export default function Cadastro() {
               onChange={(e) => setDescricao(e.target.value)}
               placeholder="Descreva os detalhes da tarefa..."
             />
-            {erros.descricao && (
-              <p className="fieldError" role="alert">
-                {erros.descricao}
-              </p>
-            )}
+            {erros.descricao && <p className="fieldError" role="alert">{erros.descricao}</p>}
           </section>
 
           <section className="fieldRow">
             <section className="field">
               <label htmlFor="prazo">Prazo</label>
-              <input id="prazo" type="date" value={prazo} onChange={(e) => setPrazo(e.target.value)} />
-              {erros.prazo && (
-                <p className="fieldError" role="alert">
-                  {erros.prazo}
-                </p>
-              )}
+              <input
+                id="prazo"
+                type="date"
+                value={prazo}
+                onChange={(e) => setPrazo(e.target.value)}
+              />
+              {erros.prazo && <p className="fieldError" role="alert">{erros.prazo}</p>}
             </section>
 
             <section className="field">
               <label htmlFor="prioridade">Prioridade</label>
-              <select id="prioridade" value={prioridade} onChange={(e) => setPrioridade(e.target.value)}>
+              <select
+                id="prioridade"
+                value={prioridade}
+                onChange={(e) => setPrioridade(e.target.value)}
+              >
                 <option value="">Selecione</option>
-                <option value="baixa">Baixa</option>
-                <option value="media">Média</option>
-                <option value="alta">Alta</option>
+                <option value="baixa">🟢 Baixa</option>
+                <option value="media">🟡 Média</option>
+                <option value="alta">🔴 Alta</option>
               </select>
-              {erros.prioridade && (
-                <p className="fieldError" role="alert">
-                  {erros.prioridade}
-                </p>
-              )}
+              {erros.prioridade && <p className="fieldError" role="alert">{erros.prioridade}</p>}
             </section>
 
             <section className="field">
               <label htmlFor="status">Status</label>
-              <select id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
+              <select
+                id="status"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              >
                 <option value="">Selecione</option>
-                <option value="pendente">Pendente</option>
-                <option value="em-andamento">Em andamento</option>
-                <option value="concluida">Concluída</option>
+                <option value="pendente">🔴 Pendente</option>
+                <option value="em-andamento">🟡 Em andamento</option>
+                <option value="concluida">🟢 Concluída</option>
               </select>
-              {erros.status && (
-                <p className="fieldError" role="alert">
-                  {erros.status}
-                </p>
-              )}
+              {erros.status && <p className="fieldError" role="alert">{erros.status}</p>}
             </section>
           </section>
         </fieldset>
 
         <button className="btn" type="submit">
-          Cadastrar
+          {modoEdicao ? "Salvar alterações" : "Cadastrar"}
         </button>
       </form>
     </section>

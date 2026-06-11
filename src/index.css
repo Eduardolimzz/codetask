@@ -350,3 +350,199 @@ select:focus {
     padding: 0.5rem 0.75rem;
   }
 }
+
+/* Ações do card (editar/excluir) */
+.cardActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.btnSecundario {
+  background-color: transparent;
+  color: #4f8ef7;
+  border: 2px solid #4f8ef7;
+  margin-top: 0;
+}
+
+.btnSecundario:hover {
+  background-color: #4f8ef7;
+  color: #ffffff;
+}
+
+.btnPerigo {
+  background-color: transparent;
+  color: #e53e3e;
+  border: 2px solid #e53e3e;
+  margin-top: 0;
+}
+
+.btnPerigo:hover {
+  background-color: #e53e3e;
+  color: #ffffff;
+}
+
+/* Badges de prioridade */
+.prioridadeAlta {
+  background-color: #fff5f5;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.prioridadeMedia {
+  background-color: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.prioridadeBaixa {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.prioridadeExterna {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Badges de status */
+.statusPendente {
+  background-color: #fff5f5;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.statusEmAndamento {
+  background-color: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.statusConcluida {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.statusApi {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+
+/* Badges de prioridade */
+.prioridadeAlta {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.prioridadeMedia {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.prioridadeBaixa {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.prioridadeExterna {
+  background-color: #e2e8f0;
+  color: #475569;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Badges de status */
+.statusPendente {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.statusEmAndamento {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.statusConcluida {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.statusApi {
+  background-color: #e2e8f0;
+  color: #475569;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
